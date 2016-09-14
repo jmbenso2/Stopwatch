@@ -1,5 +1,6 @@
 package com.example.jmbenso2.stopwatch;
 
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,10 @@ public class StopwatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
+        if(savedInstanceState !=null) {
+            seconds = savedInstanceState.getInt("seconds");
+            running = savedInstanceState.getBoolean("running");
+        }
         runTimer();
     }
 
@@ -48,6 +53,15 @@ public class StopwatchActivity extends AppCompatActivity {
                 handler.postDelayed(this,1000);
             }
         });
+    }
 
+    /*
+    public void onConfigurationChanged(Configuration config) {
+
+    }*/
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("seconds", seconds);
+        savedInstanceState.putBoolean("running", running);
     }
 }
