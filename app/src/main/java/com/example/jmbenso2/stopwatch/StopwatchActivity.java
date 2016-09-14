@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class StopwatchActivity extends AppCompatActivity {
 
     private boolean wasRunning = false;
-    private boolean running;
+    private boolean running = false;
     private int seconds = 0;
 
     @Override
